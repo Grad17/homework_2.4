@@ -14,11 +14,11 @@ public class Validator {
         return true;
     }
     private static void verification(AccountData accountData) throws WrongLoginException, WrongPasswordException {
-        if (!accountData.getLogin().matches("[a-zA-Z0-9_]+") || accountData.getLogin().length() <= 20) {
+        if (!accountData.getLogin().matches("\\w+") || accountData.getLogin().length() <= 20) {
             System.out.println("accountData = " + accountData.getLogin() + " " + accountData.getPassword());
             throw new WrongLoginException();
         }
-        if (!accountData.getPassword().matches("[a-zA-Z0-9_]+") || accountData.getPassword().length() < 20) {
+        if (!accountData.getPassword().matches("\\w+") || accountData.getPassword().length() < 20) {
             throw new WrongPasswordException();
         }
         if (accountData.getConfirmPassword().equals(accountData.getPassword())) {
